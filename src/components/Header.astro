@@ -1,0 +1,49 @@
+---
+const navItems = [
+  { label: 'Solutions', href: '/#solutions' },
+  { label: 'Work', href: '/#work' },
+  { label: 'Future Systems', href: '/#future-systems' },
+  { label: 'About', href: '/#about' },
+];
+---
+<header class="site-header" data-header data-scrolled="false">
+  <a class="brand" href="/#home" aria-label="Grashof home">
+    <img src="/logo/grashof-logo-horizontal-dark.png" width="1080" height="238" alt="Grashof Space Industry" />
+  </a>
+
+  <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" data-menu-toggle>
+    <span></span><span></span>
+  </button>
+
+  <nav class="site-nav" aria-label="Main navigation" data-menu data-open="false">
+    {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+  </nav>
+
+  <a class="header-contact" href="/#contact">Contact</a>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menu = document.querySelector<HTMLElement>('[data-menu]');
+
+  toggle?.addEventListener('click', () => {
+    if (!menu) return;
+    const open = menu.dataset.open !== 'true';
+    menu.dataset.open = String(open);
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.dataset.open = 'false';
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  const syncHeader = () => {
+    if (header) header.dataset.scrolled = String(window.scrollY > 16);
+  };
+  syncHeader();
+  window.addEventListener('scroll', syncHeader, { passive: true });
+</script>
