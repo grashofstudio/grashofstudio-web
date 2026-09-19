@@ -122,11 +122,8 @@ p { text-wrap: pretty; }
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(1rem);
   transition: opacity .75s var(--ease-out), transform .75s var(--ease-out);
 }
-.reveal.is-visible { opacity: 1; transform: none; }
 
 @media (max-width: 70rem) {
   .site-header { grid-template-columns: 1fr auto; }
@@ -161,4 +158,26 @@ p { text-wrap: pretty; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
   .starfield { display: none; }
+}
+
+/* Milestone 4: accessibility and resilient interaction */
+.reveal { opacity: 1; transform: none; }
+.js .reveal {
+  opacity: 0;
+  transform: translateY(1rem);
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+@media (hover: none) {
+  .project-card:hover,
+  .button:hover { transform: none; }
+}
+
+@media (max-width: 64rem) and (min-width: 48.01rem) {
+  .site-nav { gap: 1.3rem; }
+}
+
+@media (max-width: 48rem) {
+  .header-contact { min-height: 2.75rem; }
+  .site-nav a { min-height: 3rem; }
 }

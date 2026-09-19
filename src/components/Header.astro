@@ -27,6 +27,12 @@ const navItems = [
   const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
   const menu = document.querySelector<HTMLElement>('[data-menu]');
 
+  const closeMenu = () => {
+    if (!menu) return;
+    menu.dataset.open = 'false';
+    toggle?.setAttribute('aria-expanded', 'false');
+  };
+
   toggle?.addEventListener('click', () => {
     if (!menu) return;
     const open = menu.dataset.open !== 'true';
@@ -36,9 +42,18 @@ const navItems = [
 
   menu?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
-      menu.dataset.open = 'false';
-      toggle?.setAttribute('aria-expanded', 'false');
+      closeMenu();
     });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!menu || !toggle || menu.dataset.open !== 'true') return;
+    const target = event.target as Node;
+    if (!menu.contains(target) && !toggle.contains(target)) closeMenu();
   });
 
   const syncHeader = () => {

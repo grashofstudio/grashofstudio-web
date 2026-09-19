@@ -43,6 +43,7 @@ const socialImage = new URL(ogImage, Astro.site ?? Astro.url.origin);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
     <title>{title}</title>
+    <script is:inline>document.documentElement.classList.add('js');</script>
     <slot name="head" />
   </head>
   <body>
@@ -63,8 +64,14 @@ const socialImage = new URL(ogImage, Astro.site ?? Astro.url.origin);
         });
       }, { threshold: 0.1 });
       document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       document.querySelectorAll('video[autoplay]').forEach((video) => {
         video.muted = true;
+        if (reducedMotion) {
+          video.pause();
+          video.removeAttribute('autoplay');
+          return;
+        }
         video.play().catch(() => {});
       });
     </script>

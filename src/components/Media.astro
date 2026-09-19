@@ -1,7 +1,19 @@
 ---
 import type { Media } from '@data/site';
-interface Props { media: Media; class?: string; loading?: 'eager' | 'lazy'; }
-const { media, class: className = '', loading = 'lazy' } = Astro.props;
+interface Props {
+  media: Media;
+  class?: string;
+  loading?: 'eager' | 'lazy';
+  autoplay?: boolean;
+  controls?: boolean;
+}
+const {
+  media,
+  class: className = '',
+  loading = 'lazy',
+  autoplay = true,
+  controls = false,
+} = Astro.props;
 ---
 {media.type === 'video' ? (
   <video
@@ -10,11 +22,14 @@ const { media, class: className = '', loading = 'lazy' } = Astro.props;
     poster={media.poster}
     aria-label={media.alt}
     muted
-    autoplay
-    loop
+    autoplay={autoplay}
+    controls={controls}
+    loop={autoplay}
     playsinline
     preload="metadata"
-  ></video>
+  >
+    Your browser does not support HTML video.
+  </video>
 ) : (
   <img class={className} src={media.src} alt={media.alt} loading={loading} decoding="async" />
 )}

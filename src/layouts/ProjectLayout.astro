@@ -21,7 +21,7 @@ const canonicalPath = `/projects/${project.slug}/`;
       <a class="project-link" href="/#contact">Discuss a Similar Project <span>→</span></a>
     </div>
     <div class:list={["project-hero__media", { "project-hero__media--pair": project.heroMedia.length > 1 }]}>
-      {project.heroMedia.map((media) => <Media media={media} loading="eager" />)}
+      {project.heroMedia.map((media) => <Media media={media} loading="eager" autoplay={false} controls={media.type === 'video'} />)}
     </div>
   </section>
 
@@ -53,7 +53,7 @@ const canonicalPath = `/projects/${project.slug}/`;
 
   <section class="project-section evidence-section">
     <header class="project-section__heading reveal"><p class="section-label">Evidence</p><h2>Visual Proof<br />of Development.</h2></header>
-    <div class="evidence-grid reveal">{project.evidence.map((media, index) => <figure class:list={[{ "evidence-grid__wide": index === 0 || media.type === 'video' }]}><Media media={media} /></figure>)}</div>
+    <div class="evidence-grid reveal">{project.evidence.map((media, index) => <figure class:list={[{ "evidence-grid__wide": index === 0 || media.type === 'video' }]}><Media media={media} autoplay={false} controls={media.type === 'video'} /></figure>)}</div>
   </section>
 
   <section class="project-cta">
