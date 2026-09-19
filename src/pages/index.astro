@@ -1,16 +1,21 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import Solutions from '@components/Solutions.astro';
+import Projects from '@components/Projects.astro';
+import FutureSystems from '@components/FutureSystems.astro';
+import About from '@components/About.astro';
+import Contact from '@components/Contact.astro';
+import '@styles/home.css';
 ---
 <BaseLayout
-  title="Grashof | Applied AI & Space Systems"
-  description="Grashof builds applied AI and engineering systems for vision, thermal-fluid challenges, intelligent operations, and future space infrastructure."
+  title="Grashof | Applied AI, Thermal-Fluid & Vision Solutions"
+  description="Grashof builds applied AI systems for machine vision, thermal-fluid engineering, intelligent operations, and future space infrastructure."
 >
-  <section style="min-height:100vh;display:grid;place-items:center;padding:8rem var(--page-padding);text-align:center">
-    <div>
-      <p class="section-label">Milestone 1 · Foundation</p>
-      <div class="red-rule" style="margin-inline:auto"></div>
-      <h1 style="font-size:clamp(3.5rem,8vw,7rem)">Grashof</h1>
-      <p style="color:var(--color-muted)">Astro foundation initialized. Homepage content follows in Milestone 2.</p>
-    </div>
-  </section>
+  <Hero />
+  <Solutions />
+  <Projects />
+  <FutureSystems />
+  <About />
+  <Contact />
 </BaseLayout>

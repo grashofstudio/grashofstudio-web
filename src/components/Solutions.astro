@@ -1,0 +1,32 @@
+---
+import Media from './Media.astro';
+import { solutions } from '@data/site';
+---
+<section class="solutions section-block" id="solutions">
+  <header class="section-heading reveal">
+    <p class="section-label">Current Solutions</p>
+    <div class="red-rule"></div>
+    <h2>AI Systems Built for<br />Real-World Engineering.</h2>
+    <p>我們以 AI 落地應用為核心，在視覺、熱流與智慧工作流程中交付可部署、可驗證的系統</p>
+  </header>
+
+  <div class="solution-list">
+    {solutions.map((solution, index) => (
+      <article class="solution reveal" id={solution.id}>
+        <div class="solution__index">{String(index + 1).padStart(2, '0')}</div>
+        <div class="solution__copy">
+          <p class="solution__eyebrow">{solution.eyebrow}</p>
+          <h3>{solution.title}</h3>
+          <h4>{solution.titleZh}</h4>
+          <p class="solution__statement">{solution.statement}</p>
+          <p class="solution__zh">{solution.statementZh}</p>
+          <div class="tag-list">{solution.capabilities.map((item) => <span>{item}</span>)}</div>
+          <p class="solution__outcome">Outcome — {solution.outcome}</p>
+          <a class="text-link" href={solution.projectHref}>View Related Case <span>→</span></a>
+        </div>
+        <figure class="solution__media"><Media media={solution.media} /></figure>
+      </article>
+    ))}
+  </div>
+  <span class="section-number">02 / 06</span>
+</section>

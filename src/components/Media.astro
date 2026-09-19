@@ -1,0 +1,20 @@
+---
+import type { Media } from '@data/site';
+interface Props { media: Media; class?: string; loading?: 'eager' | 'lazy'; }
+const { media, class: className = '', loading = 'lazy' } = Astro.props;
+---
+{media.type === 'video' ? (
+  <video
+    class={className}
+    src={media.src}
+    poster={media.poster}
+    aria-label={media.alt}
+    muted
+    autoplay
+    loop
+    playsinline
+    preload="metadata"
+  ></video>
+) : (
+  <img class={className} src={media.src} alt={media.alt} loading={loading} decoding="async" />
+)}

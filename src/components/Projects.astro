@@ -1,0 +1,30 @@
+---
+import Media from './Media.astro';
+import { projects } from '@data/site';
+---
+<section class="projects section-block" id="work">
+  <header class="section-heading reveal">
+    <p class="section-label">Selected Projects</p>
+    <div class="red-rule"></div>
+    <h2>Evidence Before Claims.</h2>
+    <p>三個案例分別展示 AI 感知、工程分析與智慧決策系統的實際開發能力</p>
+  </header>
+
+  <div class="project-grid">
+    {projects.map((project) => (
+      <a class="project-card reveal" href={`/projects/${project.slug}/`}>
+        <figure><Media media={project.media} /></figure>
+        <div class="project-card__body">
+          <span class="project-card__index">{project.index}</span>
+          <span class="status-label">{project.status}</span>
+          <p class="project-card__category">{project.category}</p>
+          <h3>{project.title}</h3>
+          <p>{project.summary}</p>
+          <small>{project.summaryZh}</small>
+          <span class="project-card__arrow">→</span>
+        </div>
+      </a>
+    ))}
+  </div>
+  <span class="section-number">03 / 06</span>
+</section>
