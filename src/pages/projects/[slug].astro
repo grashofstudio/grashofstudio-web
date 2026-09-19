@@ -1,0 +1,12 @@
+---
+import ProjectLayout from '@layouts/ProjectLayout.astro';
+import { projectRecords, type ProjectRecord } from '@data/projects';
+
+export function getStaticPaths() {
+  return projectRecords.map((project) => ({ params: { slug: project.slug }, props: { project } }));
+}
+
+interface Props { project: ProjectRecord; }
+const { project } = Astro.props;
+---
+<ProjectLayout project={project} />
