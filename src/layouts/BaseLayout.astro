@@ -21,6 +21,17 @@ const {
 } = Astro.props;
 const canonical = new URL(canonicalPath, Astro.site ?? Astro.url.origin);
 const socialImage = new URL(ogImage, Astro.site ?? Astro.url.origin);
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Grashof',
+  legalName: '格拉索工業有限公司',
+  url: 'https://grashofstudio.com',
+  logo: 'https://grashofstudio.com/logo/grashof-logo-horizontal-dark.png',
+  email: 'hello@grashofstudio.com',
+  description: 'Applied AI engineering company focused on Vision AI, thermal-fluid intelligence, intelligent software systems, and future space infrastructure.',
+  address: { '@type': 'PostalAddress', addressCountry: 'TW' },
+};
 ---
 <!doctype html>
 <html lang="zh-Hant">
@@ -34,6 +45,8 @@ const socialImage = new URL(ogImage, Astro.site ?? Astro.url.origin);
     <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Grashof" />
+    <meta property="og:locale" content="zh_TW" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -43,6 +56,7 @@ const socialImage = new URL(ogImage, Astro.site ?? Astro.url.origin);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
     <script is:inline>document.documentElement.classList.add('js');</script>
     <slot name="head" />
   </head>
