@@ -1,7 +1,6 @@
 ---
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
-import Starfield from '@components/Starfield.astro';
 import '@styles/global.css';
 
 interface Props {
@@ -29,7 +28,7 @@ const organizationSchema = {
   url: 'https://grashofstudio.com',
   logo: 'https://grashofstudio.com/logo/grashof-logo-horizontal-dark.png',
   email: 'hello@grashofstudio.com',
-  description: 'Applied AI engineering company focused on Vision AI, thermal-fluid intelligence, intelligent software systems, and future space infrastructure.',
+  description: 'Applied AI engineering company working on vision systems, thermal-fluid analysis, internal AI tools, and future space technology.',
   address: { '@type': 'PostalAddress', addressCountry: 'TW' },
 };
 ---
@@ -62,7 +61,6 @@ const organizationSchema = {
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <Starfield />
     <div class="site-shell">
       <Header />
       <main id="main-content"><slot /></main>

@@ -1,38 +1,42 @@
+---
+import Starfield from './Starfield.astro';
+---
 <section class="future section-block" id="future-systems">
+  <Starfield />
   <header class="section-heading reveal">
-    <p class="section-label">Future Systems</p>
+    <p class="section-label">Future R&amp;D</p>
     <div class="red-rule"></div>
-    <h2>Engineering the<br />Next Frontier.</h2>
-    <p>從現有的 AI、熱流與訊號分析能力出發，逐步建立面向未來太空基礎系統的產品技術</p>
+    <h2>Space Technology<br />Under Development.</h2>
+    <p>目前聚焦衛星熱管理與電子系統的電磁干擾防護</p>
   </header>
 
   <div class="future-grid">
     <article class="future-card reveal">
-      <div class="future-card__visual future-card__visual--thermal" aria-hidden="true">
-        <span class="thermal-satellite"></span><span class="thermal-orbit"></span>
+      <div class="future-card__visual">
+        <img src="/media/future-satellite-thermal-simulation.png" alt="Numerical thermal simulation of a spacecraft electronics package and its heat-transfer path to a radiator" loading="lazy" />
       </div>
       <div class="future-card__copy">
         <div class="roadmap-label">R&amp;D ROADMAP · UNDER DEVELOPMENT</div>
-        <h3>Space Thermal Management</h3>
-        <h4>太空熱管理系統</h4>
-        <p>AI-assisted thermal analysis and thermal-management technologies for satellites and future space platforms.</p>
-        <ul><li>Orbital thermal environments</li><li>Radiative heat-transfer analysis</li><li>Thermal-control optimization</li><li>Operational thermal-state monitoring</li></ul>
+        <h3>Satellite Thermal Management</h3>
+        <h4>衛星熱管理技術</h4>
+        <p>研究衛星電子設備的熱路徑、散熱器配置與軌道環境下的溫度變化。</p>
+        <ul><li>Orbital thermal-load analysis</li><li>Heat-pipe and thermal-strap design</li><li>Radiator sizing and placement</li><li>Temperature monitoring and control</li></ul>
       </div>
     </article>
 
     <article class="future-card reveal">
-      <div class="future-card__visual future-card__visual--comms" aria-hidden="true">
-        <div class="spectrum-bars"></div><span class="signal-path"></span><span class="signal-node signal-node--a"></span><span class="signal-node signal-node--b"></span>
+      <div class="future-card__visual">
+        <img src="/media/future-spacecraft-emi-simulation.png" alt="Numerical electromagnetic simulation of a spacecraft electronics enclosure, connector, and shielding boundary" loading="lazy" />
       </div>
       <div class="future-card__copy">
         <div class="roadmap-label">R&amp;D ROADMAP · UNDER DEVELOPMENT</div>
-        <h3>Resilient Satellite Communications</h3>
-        <h4>衛星通訊韌性技術</h4>
-        <p>Interference-aware monitoring and resilient communication technologies for satellite systems.</p>
-        <ul><li>Interference detection</li><li>Signal classification</li><li>Spectrum-state awareness</li><li>Adaptive link strategies</li></ul>
+        <h3>Spacecraft EMI Protection</h3>
+        <h4>太空電磁干擾防護技術</h4>
+        <p>針對衛星電子模組在外太空環境中的電磁干擾，研究屏蔽、接地、濾波與封裝結構。</p>
+        <ul><li>Shielding enclosure and partition design</li><li>Conductive gaskets and grounded interfaces</li><li>Filtered connectors and cable shielding</li><li>Packaging-level EMI verification</li></ul>
       </div>
     </article>
   </div>
-  <p class="future-disclaimer reveal">These items are future product directions under active R&amp;D and are not presented as commercialized products.</p>
+  <p class="future-disclaimer reveal">以上項目仍在研發，尚未作為量產產品或商用服務對外供應。</p>
   <span class="section-number">04 / 06</span>
 </section>

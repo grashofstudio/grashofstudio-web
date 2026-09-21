@@ -18,7 +18,7 @@ const canonicalPath = `/projects/${project.slug}/`;
       <h1>{project.title}</h1>
       <p class="project-hero__lead">{project.description}</p>
       <p class="project-hero__zh">{project.descriptionZh}</p>
-      <a class="project-link" href="/#contact">Discuss a Similar Project <span>→</span></a>
+      <a class="project-link" href="/#contact">Discuss This Type of Work <span>→</span></a>
     </div>
     <div class:list={["project-hero__media", { "project-hero__media--pair": project.heroMedia.length > 1 }]}>
       {project.heroMedia.map((media) => <Media media={media} loading="eager" autoplay={false} controls={media.type === 'video'} />)}
@@ -32,33 +32,33 @@ const canonicalPath = `/projects/${project.slug}/`;
   </section>
 
   <section class="project-context project-section">
-    <header class="project-section__heading reveal"><p class="section-label">Context</p><h2>Project Context.</h2></header>
+    <header class="project-section__heading reveal"><p class="section-label">Background</p><h2>Project Background.</h2></header>
     <p class="project-context__copy reveal">{project.context}</p>
   </section>
 
   <section class="project-two-column">
-    <article class="project-text reveal"><p class="section-label">Problem</p><h2>What Needed<br />to Be Solved.</h2><p>{project.problem}</p></article>
-    <article class="project-text reveal"><p class="section-label">Solution</p><h2>How Grashof<br />Approached It.</h2><p>{project.solution}</p></article>
+    <article class="project-text reveal"><p class="section-label">Problem</p><h2>Engineering<br />Problem.</h2><p>{project.problem}</p></article>
+    <article class="project-text reveal"><p class="section-label">Work Performed</p><h2>What We<br />Did.</h2><p>{project.solution}</p></article>
   </section>
 
   <section class="project-section deliverables-section">
-    <header class="project-section__heading reveal"><p class="section-label">What We Delivered</p><h2>Concrete Outputs.<br />Reviewable Evidence.</h2></header>
+    <header class="project-section__heading reveal"><p class="section-label">Deliverables</p><h2>Project Outputs.</h2></header>
     <ul class="deliverables reveal">{project.delivered.map((item) => <li>{item}</li>)}</ul>
   </section>
 
   <section class="project-section approach-section">
-    <header class="project-section__heading reveal"><p class="section-label">Technical Approach</p><h2>From Input<br />to Implementation.</h2></header>
+    <header class="project-section__heading reveal"><p class="section-label">Process</p><h2>Work Sequence.</h2></header>
     <div class="approach-grid reveal">{project.approach.map((step, index) => <article><span>{String(index + 1).padStart(2,'0')}</span><h3>{step.name}</h3><p>{step.description}</p></article>)}</div>
   </section>
 
   <section class="project-section evidence-section">
-    <header class="project-section__heading reveal"><p class="section-label">Evidence</p><h2>Visual Proof<br />of Development.</h2></header>
-    <div class="evidence-grid reveal">{project.evidence.map((media, index) => <figure class:list={[{ "evidence-grid__wide": index === 0 || media.type === 'video' }]}><Media media={media} autoplay={false} controls={media.type === 'video'} /></figure>)}</div>
+    <header class="project-section__heading reveal"><p class="section-label">Project Material</p><h2>Images and Outputs.</h2></header>
+    <div class="evidence-grid reveal">{project.evidence.map((media, index) => <figure class:list={[{ "evidence-grid__wide": index === 0 || media.type === 'video' }]}><Media media={media} autoplay={false} controls={media.type === 'video'} />{media.caption && <figcaption>{media.caption}</figcaption>}</figure>)}</div>
   </section>
 
   <section class="project-cta">
-    <p class="section-label">Start a Project</p><div class="red-rule"></div>
-    <h2>Bring Us the<br />Technical Problem.</h2>
+    <p class="section-label">Contact</p><div class="red-rule"></div>
+    <h2>Discuss a<br />Related Project.</h2>
     <a href="mailto:hello@grashofstudio.com"><span aria-hidden="true">✉</span>hello@grashofstudio.com</a>
   </section>
 </BaseLayout>

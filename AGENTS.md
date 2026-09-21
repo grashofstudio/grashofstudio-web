@@ -8,7 +8,7 @@ The site must communicate three layers without ambiguity:
 
 1. **Core technology** — Applied AI
 2. **Current commercial solutions** — Vision AI, thermal-fluid engineering, and AI workflow / decision systems
-3. **Future product R&D** — Space thermal management and resilient satellite communications
+3. **Future product R&D** — satellite thermal management and electromagnetic-interference protection for spacecraft electronics
 
 ## Company positioning
 
@@ -56,7 +56,7 @@ Web, dashboard, and API work are delivery forms for applied AI systems, not a se
 ## Future R&D
 
 1. **Space Thermal Management**
-2. **Resilient Satellite Communications**
+2. **Spacecraft EMI Protection**
 
 Every future technology must be visibly labeled with at least one of:
 
@@ -66,7 +66,7 @@ Every future technology must be visibly labeled with at least one of:
 
 Never describe unfinished R&D as a commercialized, field-proven, or production-ready product.
 
-For public copy, prefer `Resilient Satellite Communications` over `Anti-Jamming` unless technical context explicitly requires the latter.
+Public copy should describe shielding, grounding, filtering, and packaging work accurately. Do not present this R&D as a complete anti-jamming communication system.
 
 ## Approved information architecture
 

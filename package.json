@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "latest",
-    "typescript": "^7.0.2"
+    "typescript": "^6.0.3"
   },
   "engines": {
     "node": ">=22.0.0"

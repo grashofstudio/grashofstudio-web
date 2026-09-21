@@ -1,68 +1,95 @@
-<canvas class="starfield" id="starfield" aria-hidden="true"></canvas>
+<canvas class="starfield" data-starfield aria-hidden="true"></canvas>
 
 <script>
-  const canvas = document.querySelector<HTMLCanvasElement>('#starfield');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (canvas && !reduceMotion) {
-    const ctx = canvas.getContext('2d', { alpha: true });
-    if (ctx) {
-      let width = 0;
-      let height = 0;
-      let ratio = 1;
-      let pointerX = 0;
-      let pointerY = 0;
-      type Star = { x: number; y: number; depth: number; size: number; vx: number; vy: number; phase: number; red: boolean };
-      let stars: Star[] = [];
+  if (!reduceMotion) {
+    type Star = { x: number; y: number; depth: number; size: number; vx: number; vy: number; phase: number };
+    type Field = {
+      canvas: HTMLCanvasElement;
+      ctx: CanvasRenderingContext2D;
+      width: number;
+      height: number;
+      stars: Star[];
+      active: boolean;
+    };
 
-      const resize = () => {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        ratio = Math.min(window.devicePixelRatio || 1, 2);
-        canvas.width = Math.floor(width * ratio);
-        canvas.height = Math.floor(height * ratio);
-        canvas.style.width = `${width}px`;
-        canvas.style.height = `${height}px`;
-        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-        stars = Array.from({ length: 165 }, (_, index) => ({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          depth: .2 + Math.random() * .95,
-          size: .3 + Math.random() * 1.05,
-          vx: -.012 - Math.random() * .032,
-          vy: .008 + Math.random() * .026,
-          phase: Math.random() * Math.PI * 2,
-          red: index < 7,
-        }));
-      };
+    const fields: Field[] = [];
+    let pointerX = 0;
+    let pointerY = 0;
 
-      const draw = (time: number) => {
-        ctx.clearRect(0, 0, width, height);
-        const scrollShift = window.scrollY * .012;
-        for (const star of stars) {
-          star.x += star.vx * (.5 + star.depth);
-          star.y += star.vy * (.5 + star.depth);
-          if (star.x < -8) star.x = width + 8;
-          if (star.y > height + 8) star.y = -8;
-          const x = star.x + pointerX * star.depth * 6;
-          const y = (star.y + pointerY * star.depth * 4 + scrollShift * star.depth) % (height + 10);
-          const flicker = .54 + Math.sin(time * .0012 + star.phase) * .2;
-          const alpha = Math.max(.08, flicker * star.depth * .74);
-          ctx.beginPath();
-          ctx.arc(x, y, star.size * star.depth, 0, Math.PI * 2);
-          ctx.fillStyle = star.red ? `rgba(201,22,37,${alpha * .8})` : `rgba(234,237,241,${alpha})`;
-          ctx.fill();
+    document.querySelectorAll<HTMLCanvasElement>('[data-starfield]').forEach((canvas) => {
+      if (canvas.dataset.ready === 'true') return;
+      const ctx = canvas.getContext('2d', { alpha: true });
+      if (!ctx) return;
+      canvas.dataset.ready = 'true';
+      fields.push({ canvas, ctx, width: 1, height: 1, stars: [], active: true });
+    });
+
+    const resizeField = (field: Field) => {
+      const bounds = field.canvas.parentElement?.getBoundingClientRect();
+      field.width = Math.max(bounds?.width ?? window.innerWidth, 1);
+      field.height = Math.max(bounds?.height ?? window.innerHeight, 1);
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      field.canvas.width = Math.floor(field.width * ratio);
+      field.canvas.height = Math.floor(field.height * ratio);
+      field.canvas.style.width = `${field.width}px`;
+      field.canvas.style.height = `${field.height}px`;
+      field.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      const starCount = Math.min(240, Math.max(80, Math.round((field.width * field.height) / 15000)));
+      field.stars = Array.from({ length: starCount }, () => ({
+        x: Math.random() * field.width,
+        y: Math.random() * field.height,
+        depth: .24 + Math.random() * .76,
+        size: .38 + Math.random() * 1.02,
+        vx: -.024 - Math.random() * .038,
+        vy: .01 + Math.random() * .024,
+        phase: Math.random() * Math.PI * 2,
+      }));
+    };
+
+    const visibilityObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const field = fields.find((item) => item.canvas === entry.target);
+        if (field) field.active = entry.isIntersecting;
+      });
+    }, { rootMargin: '120px' });
+
+    fields.forEach((field) => {
+      resizeField(field);
+      visibilityObserver.observe(field.canvas);
+      const parent = field.canvas.parentElement;
+      if (parent) new ResizeObserver(() => resizeField(field)).observe(parent);
+    });
+
+    window.addEventListener('pointermove', (event) => {
+      pointerX = event.clientX / Math.max(window.innerWidth, 1) - .5;
+      pointerY = event.clientY / Math.max(window.innerHeight, 1) - .5;
+    }, { passive: true });
+
+    const draw = (time: number) => {
+      const scrollShift = window.scrollY * .008;
+      for (const field of fields) {
+        if (!field.active) continue;
+        field.ctx.clearRect(0, 0, field.width, field.height);
+        for (const star of field.stars) {
+          star.x += star.vx * (.55 + star.depth);
+          star.y += star.vy * (.55 + star.depth);
+          if (star.x < -8) star.x = field.width + 8;
+          if (star.y > field.height + 8) star.y = -8;
+          const x = star.x + pointerX * star.depth * 7;
+          const y = (star.y + pointerY * star.depth * 5 + scrollShift * star.depth) % (field.height + 10);
+          const flicker = .58 + Math.sin(time * .0012 + star.phase) * .2;
+          const alpha = Math.max(.08, flicker * star.depth * .82);
+          field.ctx.beginPath();
+          field.ctx.arc(x, y, star.size * star.depth, 0, Math.PI * 2);
+          field.ctx.fillStyle = `rgba(238,241,246,${alpha})`;
+          field.ctx.fill();
         }
-        requestAnimationFrame(draw);
-      };
-
-      window.addEventListener('resize', resize);
-      window.addEventListener('pointermove', (event) => {
-        pointerX = event.clientX / Math.max(width, 1) - .5;
-        pointerY = event.clientY / Math.max(height, 1) - .5;
-      }, { passive: true });
-      resize();
+      }
       requestAnimationFrame(draw);
-    }
+    };
+
+    requestAnimationFrame(draw);
   }
 </script>

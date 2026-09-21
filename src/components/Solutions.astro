@@ -1,13 +1,15 @@
 ---
 import Media from './Media.astro';
+import Starfield from './Starfield.astro';
 import { solutions } from '@data/site';
 ---
 <section class="solutions section-block" id="solutions">
+  <Starfield />
   <header class="section-heading reveal">
     <p class="section-label">Current Solutions</p>
     <div class="red-rule"></div>
-    <h2>AI Systems Built for<br />Real-World Engineering.</h2>
-    <p>我們以 AI 落地應用為核心，在視覺、熱流與智慧工作流程中交付可部署、可驗證的系統</p>
+    <h2>Applied AI and<br />Engineering Solutions.</h2>
+    <p>從需求定義、系統設計到落地導入</p>
   </header>
 
   <div class="solution-list">
@@ -21,8 +23,8 @@ import { solutions } from '@data/site';
           <p class="solution__statement">{solution.statement}</p>
           <p class="solution__zh">{solution.statementZh}</p>
           <div class="tag-list">{solution.capabilities.map((item) => <span>{item}</span>)}</div>
-          <p class="solution__outcome">Outcome — {solution.outcome}</p>
-          <a class="text-link" href={solution.projectHref}>View Related Case <span>→</span></a>
+          <p class="solution__outcome">Typical delivery — {solution.outcome}</p>
+          <a class="text-link" href={solution.projectHref}>View Project <span>→</span></a>
         </div>
         <figure class="solution__media"><Media media={solution.media} /></figure>
       </article>

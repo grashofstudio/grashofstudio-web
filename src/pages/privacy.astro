@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import '@styles/pages.css';
 ---
 <BaseLayout title="Privacy | Grashof" description="Privacy information for the Grashof website." canonicalPath="/privacy/">
   <article class="legal-page">
@@ -13,6 +14,3 @@ import BaseLayout from '@layouts/BaseLayout.astro';
     <section><h2>Contact</h2><p><a href="mailto:hello@grashofstudio.com">hello@grashofstudio.com</a></p></section>
   </article>
 </BaseLayout>
-<style>
-  .legal-page{min-height:80vh;padding:10rem var(--page-padding) 6rem}.legal-page h1{font-size:clamp(3.6rem,7vw,7rem)}.legal-date{color:var(--color-muted)}.legal-page section{max-width:54rem;padding:1.75rem 0;border-top:1px solid var(--color-line)}.legal-page section h2{font-family:var(--font-body);font-size:1.4rem;font-weight:600;letter-spacing:0;text-transform:none}.legal-page section p{color:var(--color-muted)}.legal-page a{color:var(--color-red-bright)}
-</style>

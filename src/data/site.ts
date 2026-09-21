@@ -3,6 +3,7 @@ export type Media = {
   src: string;
   poster?: string;
   alt: string;
+  caption?: string;
 };
 
 export type Solution = {
@@ -32,37 +33,37 @@ export type ProjectSummary = {
 export const solutions: Solution[] = [
   {
     id: 'vision-ai',
-    eyebrow: 'Applied AI / Perception',
+    eyebrow: 'Vision / AI',
     title: 'Vision AI & Perception Systems',
     titleZh: '視覺 AI 與感知系統',
-    statement: 'Turn live visual data into recognition, classification, and actionable signals.',
-    statementZh: '將即時影像轉化為可使用的辨識、分類與警示結果',
+    statement: 'Connect camera feeds, image processing, recognition models, and alerts in one working flow.',
+    statementZh: '串接攝影機取像、影像前處理、辨識模型與警示流程',
     capabilities: ['Camera integration', 'Image enhancement', 'AI API', 'Lightweight models', 'Edge deployment'],
-    outcome: 'Deployable recognition workflows for real operating environments.',
+    outcome: 'Working prototypes, API integration, and an edge-deployment plan.',
     projectHref: '/projects/bio-vision-ai/',
     media: { type: 'video', src: '/media/bio-vision-demo.mp4', poster: '/media/bio-vision-poster.jpg', alt: 'Bio Vision AI prototype recognizing biological features from a live camera feed' },
   },
   {
     id: 'thermal-fluid',
-    eyebrow: 'Physics / Engineering Intelligence',
-    title: 'Thermal-Fluid Intelligence',
-    titleZh: '熱流工程與智慧分析',
-    statement: 'Reduce physical trial and error through physics-based engineering analysis.',
-    statementZh: '以物理模型與工程分析降低實驗與設備開發的試誤成本',
+    eyebrow: 'Thermal / Simulation',
+    title: 'Thermal-Fluid Engineering Solutions',
+    titleZh: '熱流工程解決方案',
+    statement: 'Develop thermal-fluid solutions from problem definition and modeling to design recommendations, process optimization, and implementation support.',
+    statementZh: '從問題定義與熱流建模，到設計改善、製程優化與導入支援',
     capabilities: ['Heat transfer', 'Fluid flow', 'Multiphysics simulation', 'Thermal management', 'Process optimization'],
-    outcome: 'Validated parameter windows and engineering evidence for development decisions.',
+    outcome: 'Thermal models, design comparisons, process parameters, and implementation recommendations.',
     projectHref: '/projects/simulation-led-development/',
     media: { type: 'image', src: '/media/induction-heat.gif', alt: 'Thermal simulation of high-frequency induction heating' },
   },
   {
     id: 'ai-workflow',
-    eyebrow: 'Applied AI / Intelligent Operations',
-    title: 'AI Workflow & Decision Systems',
-    titleZh: 'AI 工作流與決策系統',
-    statement: 'Turn fragmented data and manual workflows into usable intelligent systems.',
-    statementZh: '將分散資料與人工流程轉化為可操作、可持續擴充的智慧系統',
-    capabilities: ['Multi-source APIs', 'Data normalization', 'AI summarization', 'Dashboards', 'Scenario analysis'],
-    outcome: 'Integrated tools that surface the information users need to act.',
+    eyebrow: 'Data / Software',
+    title: 'Custom AI & API Solutions',
+    titleZh: '客製 AI 與 API 解決方案',
+    statement: 'Design and implement client-specific applications that connect data sources, APIs, AI models, and operational workflows.',
+    statementZh: '依客戶需求設計與導入應用系統，串接資料來源、API、AI 模型與作業流程',
+    capabilities: ['System design', 'API integration', 'AI applications', 'Workflow automation', 'Deployment'],
+    outcome: 'Solution design, data and API integration, application development, and deployment support.',
     projectHref: '/projects/market-pulse/',
     media: { type: 'image', src: '/media/market-portfolio.png', alt: 'Market Pulse AI decision-support dashboard' },
   },
@@ -75,8 +76,8 @@ export const projects: ProjectSummary[] = [
     title: 'Bio Vision AI',
     category: 'Vision AI & Perception Systems',
     status: 'APPLIED AI PROTOTYPE',
-    summary: 'Lightweight biological feature and species recognition from live camera streams.',
-    summaryZh: '從動態影像擷取生物特徵，並以輕量化 AI 流程推估物種',
+    summary: 'A camera-based prototype for selecting frames, extracting biological features, and estimating species.',
+    summaryZh: '從攝影機影像篩選可用畫面、擷取生物特徵並推估物種',
     media: { type: 'video', src: '/media/bio-vision-demo.mp4', poster: '/media/bio-vision-poster.jpg', alt: 'Bio Vision AI live camera prototype' },
   },
   {
@@ -85,8 +86,8 @@ export const projects: ProjectSummary[] = [
     title: 'Simulation-Led Process Development',
     category: 'Thermal-Fluid Intelligence',
     status: 'APPLIED ENGINEERING CASE',
-    summary: 'Physics-based thermal analysis for equipment and process development.',
-    summaryZh: '以熱流模型、參數分析與製程視窗支援設備及製程開發',
+    summary: 'Two thermal studies used to compare induction-heating and laser-process parameters before physical trials.',
+    summaryZh: '在實驗前比較高周波加熱與雷射製程的溫度分布及參數範圍',
     media: { type: 'image', src: '/media/induction-heat.gif', alt: 'Induction heating simulation used for process development' },
   },
   {
@@ -95,8 +96,8 @@ export const projects: ProjectSummary[] = [
     title: 'Market Pulse',
     category: 'AI Workflow & Decision Systems',
     status: 'INTERNAL AI PRODUCT PROTOTYPE',
-    summary: 'Multi-source data and AI workflow for market intelligence and decision support.',
-    summaryZh: '整合多來源 API、事件與持股資料，再由 AI 產出重點與情境',
+    summary: 'An internal dashboard that combines market, news, event, and portfolio data.',
+    summaryZh: '將市場、新聞、事件與持股資料集中在同一個內部工具',
     media: { type: 'image', src: '/media/market-news-events.png', alt: 'Market Pulse news and event intelligence dashboard' },
   },
 ];

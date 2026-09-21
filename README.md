@@ -12,8 +12,8 @@ Grashof is an applied AI engineering company. Current commercial solutions focus
 
 Future product R&D focuses on:
 
-- Space Thermal Management
-- Resilient Satellite Communications
+- Satellite Thermal Management
+- Spacecraft EMI Protection
 
 ## Pages
 
