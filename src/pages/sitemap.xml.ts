@@ -2,7 +2,6 @@ import type { APIRoute } from 'astro';
 
 const paths = [
   '/',
-  '/projects/bio-vision-ai/',
   '/projects/simulation-led-development/',
   '/projects/market-pulse/',
   '/privacy/',

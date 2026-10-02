@@ -1,5 +1,6 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
+import sharp from 'sharp';
 
 const root = path.resolve('dist');
 const exists = async (target) => { try { await fs.access(target); return true; } catch { return false; } };
@@ -91,9 +92,25 @@ for (const file of htmlFiles) {
 }
 
 const homepage = await fs.readFile(path.join(root, 'index.html'), 'utf8');
-for (const required of ['R&amp;D ROADMAP', 'UNDER DEVELOPMENT', 'APPLIED AI PROTOTYPE', 'APPLIED ENGINEERING CASE', 'INTERNAL AI PRODUCT PROTOTYPE']) {
+for (const required of ['R&amp;D ROADMAP', 'UNDER DEVELOPMENT', 'APPLIED ENGINEERING CASE', 'INTERNAL AI PRODUCT PROTOTYPE']) {
   if (!homepage.includes(required)) failures.push(`index.html missing required label: ${required}`);
 }
+
+// Search identity must point to the supplied company logo, not the retired G.
+const schemas = [...homepage.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+  .map((match) => JSON.parse(match[1]));
+const organization = schemas.find((schema) => schema['@type'] === 'Organization');
+const website = schemas.find((schema) => schema['@type'] === 'WebSite');
+if (organization?.logo !== 'https://grashofstudio.com/icons/icon-512.png') failures.push('Organization must use the company logo');
+if (website?.url !== 'https://grashofstudio.com/') failures.push('Homepage missing canonical WebSite identity');
+for (const [filename, size] of [['favicon-96.png', 96], ['apple-touch-icon.png', 180], ['icon-192.png', 192], ['icon-512.png', 512]]) {
+  const metadata = await sharp(path.join(root, 'icons', filename)).metadata();
+  if (metadata.format !== 'png' || metadata.width !== size || metadata.height !== size) failures.push(`Invalid square company icon: ${filename}`);
+}
+const companyIcon = await fs.readFile(path.join(root, 'icons/icon-512.png'));
+const legacyIcon = await fs.readFile(path.join(root, 'icons/favicon.svg'), 'utf8');
+if (!legacyIcon.includes(companyIcon.toString('base64'))) failures.push('Legacy favicon URL must contain the current company logo');
+if (homepage.includes('bio-vision-ai')) failures.push('Retired Bio Vision AI case must not be linked');
 
 if (failures.length) {
   console.error('Verification failed:\n' + failures.map((item) => `- ${item}`).join('\n'));

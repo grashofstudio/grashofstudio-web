@@ -6,21 +6,25 @@ Build and maintain the official Grashof company website as a static Astro site f
 
 The site must communicate three layers without ambiguity:
 
-1. **Core technology** — Applied AI
-2. **Current commercial solutions** — Vision AI, thermal-fluid engineering, and AI workflow / decision systems
+1. **Core technology** — Thermal Digital Twin & Applied AI Solution
+2. **Current commercial solutions** — complete thermal-fluid solutions and custom AI / API applications
 3. **Future product R&D** — satellite thermal management and electromagnetic-interference protection for spacecraft electronics
 
 ## Company positioning
 
-Grashof is an applied AI engineering company.
+Grashof focuses on thermal digital twins and applied AI solutions.
+
+Search-facing core fields: 熱流工程解決方案、數位孿生熱管理、協助客戶建置 AI 落地應用. Mention 工業視覺 and AI / API applications within current applications; do not restore the retired Vision AI service row or Bio Vision AI case. Satellite thermal-management systems remain explicitly under development.
 
 Approved English positioning:
 
-> Grashof builds deployable AI and engineering systems for vision, thermal-fluid challenges, intelligent operations, and future space infrastructure.
+> Grashof delivers complete thermal-fluid solutions and custom AI and API applications.
 
 Approved Chinese positioning:
 
-> Grashof 是一家以 AI 落地應用為核心的工程科技公司，整合視覺感知、熱流工程、資料與軟體系統，協助客戶解決真實世界中的技術問題
+> 格拉索提供完整熱流解決方案與客製 AI、API 落地應用
+
+Footer brand line: `Space Industry, Taiwan`. Keep the Contact us email action in section 6; do not display an email address or Privacy link in the footer.
 
 Approved bridge statement:
 
@@ -28,14 +32,7 @@ Approved bridge statement:
 
 ## Current solutions
 
-1. **Vision AI & Perception Systems**
-   - Camera and video-stream integration
-   - Image enhancement and preprocessing
-   - Feature, object, and species recognition
-   - AI API and lightweight-model integration
-   - Edge deployment and real-time alerts
-
-2. **Thermal-Fluid Intelligence**
+1. **Thermal-Fluid Engineering Solutions**
    - Heat-transfer and fluid-flow analysis
    - Multiphysics simulation
    - Thermal-management design
@@ -43,7 +40,7 @@ Approved bridge statement:
    - Process-window development
    - Equipment and product-development support
 
-3. **AI Workflow & Decision Systems**
+2. **Custom AI & API Solutions**
    - Multi-source API integration
    - Data normalization and scheduled updates
    - AI summarization and classification
@@ -90,9 +87,10 @@ Do not add these homepage sections without explicit approval:
 
 ### Project pages
 
-- `/projects/bio-vision-ai/`
 - `/projects/simulation-led-development/`
 - `/projects/market-pulse/`
+
+Bio Vision AI is not published as a case study. Vision AI is no longer a separate homepage service. Do not display its former case media or link to the retired case page.
 
 Each project page must include:
 
@@ -111,7 +109,6 @@ Do not invent performance metrics, customer names, confidential process conditio
 
 Use the approved labels accurately:
 
-- Bio Vision AI — `APPLIED AI PROTOTYPE`
 - Simulation-Led Process Development — `APPLIED ENGINEERING CASE`
 - Market Pulse — `INTERNAL AI PRODUCT PROTOTYPE`
 
@@ -221,7 +218,6 @@ Final acceptance:
 
 ### Milestone 3 — Case studies
 
-- Bio Vision AI
 - Simulation-Led Process Development
 - Market Pulse
 

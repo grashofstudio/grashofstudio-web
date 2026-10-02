@@ -40,7 +40,7 @@
 .solution__media img, .solution__media video { width: 100%; height: 100%; object-fit: cover; }
 
 .projects { background: linear-gradient(180deg, #000, #060607 45%, #000); }
-.project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .85rem; }
+.project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; }
 .project-card { position: relative; overflow: hidden; border: 1px solid var(--color-line); color: inherit; text-decoration: none; background: rgba(0,0,0,.62); transition: transform .25s var(--ease-out), border-color .25s ease; }
 .project-card:hover { transform: translateY(-.35rem); border-color: var(--color-red); }
 .project-card figure { height: 17rem; margin: 0; overflow: hidden; background: var(--color-surface); }
@@ -85,8 +85,9 @@
 .contact__content { position: relative; z-index: 3; max-width: 50rem; }
 .contact__content > img { width: 18rem; height: auto; margin-bottom: 4rem; }
 .contact h2 { font-size: clamp(4rem, 7vw, 7rem); }
-.contact__mail { display: inline-flex; align-items: center; gap: 1rem; color: #ddd; text-decoration: none; font-size: .9rem; }
-.contact__mail > span { width: 2.8rem; height: 2.8rem; display: grid; place-items: center; border: 1px solid var(--color-line-strong); border-radius: 50%; }
+.contact__mail { display: inline-flex; align-items: center; gap: 1.25rem; color: #ddd; text-decoration: none; font-size: clamp(1.25rem, 2vw, 1.6rem); }
+.contact__mail-icon { width: 5rem; height: 5rem; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid var(--color-line-strong); border-radius: 50%; }
+.contact__mail-icon svg { width: 2.5rem; height: auto; }
 .contact__mail:hover { color: var(--color-red-bright); }
 .contact__planet { position: absolute; z-index: 1; right: -12%; bottom: -42%; width: 78%; opacity: .68; }
 .contact__planet img { width: 100%; filter: grayscale(1) contrast(1.25) brightness(.5); }

@@ -1,3 +1,6 @@
+export const siteTitle = 'Grashof 格拉索工業 | 熱流工程、數位孿生與 AI 落地應用';
+export const siteDescription = '格拉索工業提供熱流工程解決方案、數位孿生熱管理，協助客戶建置工業視覺與客製 AI、API 落地應用。未來研發聚焦衛星熱管理系統與太空電磁干擾防護。';
+
 export type Media = {
   type: 'image' | 'video';
   src: string;
@@ -20,7 +23,7 @@ export type Solution = {
 };
 
 export type ProjectSummary = {
-  slug: 'bio-vision-ai' | 'simulation-led-development' | 'market-pulse';
+  slug: 'simulation-led-development' | 'market-pulse';
   index: string;
   title: string;
   category: string;
@@ -31,18 +34,6 @@ export type ProjectSummary = {
 };
 
 export const solutions: Solution[] = [
-  {
-    id: 'vision-ai',
-    eyebrow: 'Vision / AI',
-    title: 'Vision AI & Perception Systems',
-    titleZh: '視覺 AI 與感知系統',
-    statement: 'Connect camera feeds, image processing, recognition models, and alerts in one working flow.',
-    statementZh: '串接攝影機取像、影像前處理、辨識模型與警示流程',
-    capabilities: ['Camera integration', 'Image enhancement', 'AI API', 'Lightweight models', 'Edge deployment'],
-    outcome: 'Working prototypes, API integration, and an edge-deployment plan.',
-    projectHref: '/projects/bio-vision-ai/',
-    media: { type: 'video', src: '/media/bio-vision-demo.mp4', poster: '/media/bio-vision-poster.jpg', alt: 'Bio Vision AI prototype recognizing biological features from a live camera feed' },
-  },
   {
     id: 'thermal-fluid',
     eyebrow: 'Thermal / Simulation',
@@ -71,18 +62,8 @@ export const solutions: Solution[] = [
 
 export const projects: ProjectSummary[] = [
   {
-    slug: 'bio-vision-ai',
-    index: '01',
-    title: 'Bio Vision AI',
-    category: 'Vision AI & Perception Systems',
-    status: 'APPLIED AI PROTOTYPE',
-    summary: 'A camera-based prototype for selecting frames, extracting biological features, and estimating species.',
-    summaryZh: '從攝影機影像篩選可用畫面、擷取生物特徵並推估物種',
-    media: { type: 'video', src: '/media/bio-vision-demo.mp4', poster: '/media/bio-vision-poster.jpg', alt: 'Bio Vision AI live camera prototype' },
-  },
-  {
     slug: 'simulation-led-development',
-    index: '02',
+    index: '01',
     title: 'Simulation-Led Process Development',
     category: 'Thermal-Fluid Intelligence',
     status: 'APPLIED ENGINEERING CASE',
@@ -92,7 +73,7 @@ export const projects: ProjectSummary[] = [
   },
   {
     slug: 'market-pulse',
-    index: '03',
+    index: '02',
     title: 'Market Pulse',
     category: 'AI Workflow & Decision Systems',
     status: 'INTERNAL AI PRODUCT PROTOTYPE',

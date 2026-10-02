@@ -25,11 +25,10 @@
 
 **Status:** Complete
 
-- Bio Vision AI
 - Simulation-Led Process Development
 - Market Pulse
 
-All three pages use the same eight-part case-study framework.
+Both published pages use the same eight-part case-study framework. Bio Vision AI and the separate Vision AI service were withdrawn from the homepage on 2026-10-02.
 
 ## 4 — Responsive, Accessibility, and Motion
 

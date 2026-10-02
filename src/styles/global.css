@@ -99,16 +99,11 @@ p { text-wrap: pretty; }
 
 .site-footer {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 3rem;
-  align-items: end;
+  grid-template-columns: 1fr;
   padding: 2.4rem var(--page-padding) 3rem;
   border-top: 1px solid var(--color-line);
 }
-.footer-meta, .footer-links { display: grid; gap: .25rem; font-size: .62rem; color: var(--color-muted); }
-.footer-links { text-align: right; }
-.footer-links a { text-decoration: none; }
-.footer-links a:hover { color: var(--color-red-bright); }
+.footer-meta { display: grid; gap: .25rem; font-size: .62rem; color: var(--color-muted); }
 
 .starfield {
   position: absolute;
@@ -158,8 +153,7 @@ p { text-wrap: pretty; }
   .brand { width: 12rem; }
   .header-contact { min-height: 2.75rem; }
   .site-nav a { min-height: 3rem; }
-  .site-footer { grid-template-columns: 1fr; gap: 1.25rem; padding-inline: 1.25rem; }
-  .footer-links { text-align: left; }
+  .site-footer { padding-inline: 1.25rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

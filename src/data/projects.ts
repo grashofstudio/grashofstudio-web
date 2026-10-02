@@ -20,42 +20,6 @@ export type ProjectRecord = {
 
 export const projectRecords: ProjectRecord[] = [
   {
-    slug: 'bio-vision-ai',
-    title: 'Bio Vision AI',
-    category: 'Vision AI & Perception Systems',
-    status: 'APPLIED AI PROTOTYPE',
-    role: 'Vision workflow and prototype development',
-    stage: 'Prototype / Internal development',
-    description: 'A camera-based prototype for extracting biological features and estimating species from live video.',
-    descriptionZh: '以一般攝影機影像為輸入，完成影格篩選、影像強化、生物特徵擷取與物種推估原型',
-    heroMedia: [
-      { type: 'video', src: '/media/bio-vision-demo.mp4', poster: '/media/bio-vision-poster.jpg', alt: 'Bio Vision AI prototype processing a live aquarium camera feed' },
-    ],
-    context: 'Bio Vision AI is an internal prototype built around a standard aquarium camera feed. It tests whether usable biological features can be recovered before species estimation without requiring high-end inference hardware.',
-    problem: 'Fish change pose continuously and are often obscured by reflections, blur, uneven lighting, and water conditions. A simple object detector can locate an animal, but it does not provide enough detail for a species estimate.',
-    solution: 'The prototype rejects unclear frames, adjusts resolution and contrast, extracts visible traits, and compares those traits with candidate species through a lightweight model and an AI API.',
-    delivered: [
-      'Camera capture and usable-frame selection',
-      'Resolution and contrast adjustment',
-      'Shape, color, texture, fin, and motion features',
-      'Lightweight model and AI API connection',
-      'Structured species-estimate output',
-      'Live prototype for internal testing',
-    ],
-    approach: [
-      { name: 'Video Input', description: 'Read a continuous feed from a standard camera' },
-      { name: 'Frame Filter', description: 'Reject frames with poor visibility or focus' },
-      { name: 'Image Adjustment', description: 'Adjust scale, contrast, and visible detail' },
-      { name: 'Feature Review', description: 'Read shape, color, texture, fins, and movement' },
-      { name: 'Species Estimate', description: 'Compare the visible traits with candidate species' },
-      { name: 'Prototype Output', description: 'Return the estimate and the supporting traits' },
-    ],
-    evidence: [
-      { type: 'video', src: '/media/bio-vision-demo.mp4', poster: '/media/bio-vision-poster.jpg', alt: 'Recorded demonstration of Bio Vision AI identifying biological features', caption: 'Live prototype showing the camera frame, visible traits, and species estimate.' },
-      { type: 'image', src: '/media/bio-vision-poster.jpg', alt: 'Representative camera frame used by the Bio Vision AI prototype', caption: 'Representative aquarium frame used during prototype testing.' },
-    ],
-  },
-  {
     slug: 'simulation-led-development',
     title: 'Simulation-Led Process Development',
     category: 'Thermal-Fluid Intelligence',

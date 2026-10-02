@@ -2,6 +2,7 @@
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import '@styles/global.css';
+import { siteDescription } from '../data/site';
 
 interface Props {
   title: string;
@@ -23,13 +24,26 @@ const socialImage = new URL(ogImage, Astro.site ?? Astro.url.origin);
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': 'https://grashofstudio.com/#organization',
   name: 'Grashof',
+  alternateName: '格拉索工業',
   legalName: '格拉索工業有限公司',
   url: 'https://grashofstudio.com',
-  logo: 'https://grashofstudio.com/logo/grashof-logo-horizontal-dark.png',
+  logo: 'https://grashofstudio.com/icons/icon-512.png',
   email: 'hello@grashofstudio.com',
-  description: 'Applied AI engineering company working on vision systems, thermal-fluid analysis, internal AI tools, and future space technology.',
+  description: siteDescription,
   address: { '@type': 'PostalAddress', addressCountry: 'TW' },
+};
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://grashofstudio.com/#website',
+  name: 'Grashof 格拉索工業',
+  alternateName: 'Grashof',
+  url: 'https://grashofstudio.com/',
+  description: siteDescription,
+  inLanguage: 'zh-Hant',
+  publisher: { '@id': 'https://grashofstudio.com/#organization' },
 };
 ---
 <!doctype html>
@@ -41,7 +55,9 @@ const organizationSchema = {
     <meta name="theme-color" content="#000000" />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16 32x32 48x48 64x64" />
+    <link rel="icon" href="/icons/favicon-96.png" type="image/png" sizes="96x96" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Grashof" />
@@ -56,6 +72,7 @@ const organizationSchema = {
     <meta name="twitter:image" content={socialImage} />
     <title>{title}</title>
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)}></script>
+    {canonical.pathname === '/' && <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>}
     <script is:inline>document.documentElement.classList.add('js');</script>
     <slot name="head" />
   </head>

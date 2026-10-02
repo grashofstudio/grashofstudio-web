@@ -4,11 +4,10 @@ Official Astro website for **Grashof — Applied AI & Space Systems**.
 
 ## Positioning
 
-Grashof is an applied AI engineering company. Current commercial solutions focus on:
+Grashof focuses on thermal digital twins and applied AI solutions. Current commercial solutions are:
 
-- Vision AI & Perception Systems
-- Thermal-Fluid Intelligence
-- AI Workflow & Decision Systems
+- Complete Thermal-Fluid Engineering Solutions
+- Custom AI & API Applications
 
 Future product R&D focuses on:
 
@@ -18,7 +17,6 @@ Future product R&D focuses on:
 ## Pages
 
 - `/`
-- `/projects/bio-vision-ai/`
 - `/projects/simulation-led-development/`
 - `/projects/market-pulse/`
 - `/privacy/`
@@ -51,6 +49,14 @@ npm run build
 ```
 
 Output is generated in `dist/`.
+
+## Brand icons
+
+Browser, Google Search, and app icons use the supplied Grashof logo mark.
+To regenerate the committed PNG and ICO assets after updating that mark, run
+`node scripts/generate-icons.mjs` after installing the project dependencies.
+
+Bio Vision AI is not published as a case study, and Vision AI is no longer a separate homepage service.
 
 ## Deployment
 
