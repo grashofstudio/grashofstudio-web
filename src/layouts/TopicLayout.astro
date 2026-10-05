@@ -1,0 +1,86 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { Topic } from '@data/topics';
+import { topics } from '@data/topics';
+import { contactEmail } from '@data/site';
+import '@styles/topic.css';
+
+interface Props { topic: Topic; }
+const { topic } = Astro.props;
+const canonical = new URL(topic.path, Astro.site).href;
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': `${canonical}#webpage`,
+  url: canonical,
+  name: `${topic.titleZh} · ${topic.title}`,
+  description: topic.description,
+  inLanguage: ['zh-Hant', 'en'],
+  isPartOf: { '@id': 'https://grashofstudio.com/#website' },
+  publisher: { '@id': 'https://grashofstudio.com/#organization' },
+};
+const breadcrumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Grashof', item: 'https://grashofstudio.com/' },
+    { '@type': 'ListItem', position: 2, name: topic.titleZh, item: canonical },
+  ],
+};
+---
+<BaseLayout title={`${topic.titleZh} | ${topic.title} | Grashof`} description={topic.description} canonicalPath={topic.path} structuredData={[pageSchema, breadcrumbs]}>
+  <article class="topic-page">
+    <header class="topic-hero">
+      <nav class="topic-breadcrumb" aria-label="Breadcrumb"><a href="/">Grashof</a><span aria-hidden="true"> / </span><span aria-current="page">{topic.titleZh}</span></nav>
+      <p class="section-label">{topic.section} · Grashof, Taiwan</p>
+      <div class="red-rule"></div>
+      {topic.status && <p class="topic-status">{topic.status}</p>}
+      <h1 lang="en">{topic.title}</h1>
+      <p class="topic-title-zh">{topic.titleZh}</p>
+      <p class="topic-lead">{topic.lead}</p>
+      <p class="topic-english" lang="en">{topic.leadEn}</p>
+      <p class="topic-scope">{topic.scopeNote}</p>
+      <a class="topic-action" href={`mailto:${contactEmail}`}>{topic.status ? '討論研發合作' : '討論專案需求'} <span aria-hidden="true">→</span></a>
+    </header>
+
+    <section class="topic-section topic-overview">
+      <h2>{topic.overview.title}</h2>
+      <div>{topic.overview.paragraphs.map((paragraph) => <p>{paragraph}</p>)}</div>
+    </section>
+    <section class="topic-section">
+      <h2>{topic.workTitle}</h2>
+      <ol class="topic-work">{topic.work.map((item) => <li><h3>{item.title}</h3><p>{item.description}</p></li>)}</ol>
+    </section>
+    <section class="topic-section">
+      <h2>{topic.status ? '研發輸入與預期研究輸出' : '專案輸入與交付範圍'}</h2>
+      <div class="topic-io">
+        <div><h3>所需資料 · Inputs</h3><ul>{topic.inputs.map((item) => <li>{item}</li>)}</ul></div>
+        <div><h3>{topic.status ? '規劃輸出 · Planned outputs' : '交付項目 · Outputs'}</h3><ul>{topic.outputs.map((item) => <li>{item}</li>)}</ul></div>
+      </div>
+    </section>
+    {topic.progress && <section class="topic-section">
+      <h2>目前開發進度 · Development status</h2>
+      <p class="topic-prose">目前處於基礎模型與驗證工作流程開發階段，尚未完成熱模型整合驗收。以下軟體進度不代表衛星產品已通過驗證。</p>
+      <div class="topic-io">
+        <div><h3>已完成的基礎工作</h3><ul>{topic.progress.completed.map((item) => <li>{item}</li>)}</ul></div>
+        <div><h3>仍待完成與驗證</h3><ul>{topic.progress.pending.map((item) => <li>{item}</li>)}</ul></div>
+      </div>
+    </section>}
+    <section class="topic-section">
+      <h2>{topic.evidence.title}</h2>
+      <p class="topic-prose">{topic.evidence.description}</p>
+      {topic.evidence.href && <a class="topic-action" href={topic.evidence.href}>{topic.evidence.linkLabel} <span aria-hidden="true">→</span></a>}
+      {topic.evidence.media && <figure class="topic-figure"><img src={topic.evidence.media.src} alt={topic.evidence.media.alt} width={topic.evidence.media.width} height={topic.evidence.media.height} loading="lazy" decoding="async" /><figcaption>{topic.evidence.media.caption}</figcaption></figure>}
+    </section>
+    <section class="topic-section">
+      <h2>專案常見問題</h2>
+      <div class="topic-questions">{topic.questions.map((item) => <div><h3>{item.question}</h3><p>{item.answer}</p></div>)}</div>
+      {topic.reference && <p class="topic-reference">技術背景參考：<a href={topic.reference.href}>{topic.reference.label}</a>。參考文獻不代表與該機構有合作或背書關係。</p>}
+    </section>
+    <aside class="topic-section" aria-label="Related topics">
+      <h2>相關主題</h2>
+      <ul class="topic-related">{topics.filter((item) => item.path !== topic.path).map((item) => <li><a href={item.path}>{item.titleZh}<span lang="en">{item.title}{item.status ? ' · Under Development' : ''} →</span></a></li>)}</ul>
+      <a class="topic-action" href={`mailto:${contactEmail}`}>Contact us <span aria-hidden="true">→</span></a>
+    </aside>
+  </article>
+</BaseLayout>

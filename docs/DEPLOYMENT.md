@@ -40,7 +40,7 @@ Contact buttons open the visitor's mail app with this Gmail recipient. The value
 
 - GitHub Actions CI is green
 - Netlify Preview deploy succeeds
-- `/`, two project pages, `/privacy/`, `/404.html`, and `/sitemap.xml` load
+- `/`, two project pages, three topic pages, `/privacy/`, `/404.html`, and `/sitemap.xml` load
 - Mobile layout has no horizontal overflow
 - Videos load and expose controls on case pages
 - Future Systems remains labeled R&D

@@ -9,7 +9,7 @@ interface Props { project: ProjectRecord; }
 const { project } = Astro.props;
 const canonicalPath = `/projects/${project.slug}/`;
 ---
-<BaseLayout title={`${project.title} | Grashof`} description={project.description} canonicalPath={canonicalPath}>
+<BaseLayout title={project.seoTitle ?? `${project.title} | Grashof`} description={project.seoDescription ?? project.description} canonicalPath={canonicalPath}>
   <section class="project-hero">
     <div class="project-hero__copy reveal">
       <a class="back-link" href="/#work">← Back to Selected Projects</a>
@@ -58,6 +58,7 @@ const canonicalPath = `/projects/${project.slug}/`;
   </section>
 
   <section class="project-cta">
+    {project.relatedLinks && <nav class="project-related" aria-label="Related engineering topics">{project.relatedLinks.map((item) => <a href={item.href}>{item.label}</a>)}</nav>}
     <p class="section-label">Contact</p><div class="red-rule"></div>
     <h2>Discuss a<br />Related Project.</h2>
     <a href={`mailto:${contactEmail}`}><span aria-hidden="true">✉</span>{contactEmail}</a>

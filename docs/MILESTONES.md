@@ -63,4 +63,6 @@ Both published pages use the same eight-part case-study framework. Bio Vision AI
 
 ## Verification note
 
-The current execution environment cannot reach the npm registry, so dependency installation and the actual Astro production build could not be run here. GitHub Actions and Netlify are configured to execute the full quality pipeline after the repository is pushed to GitHub.
+The original environment could not reach the npm registry. Local check/build/verify subsequently passed for the 2026-10-05 contact-email release. Production currently uses manual Netlify Drop uploads, not a connected Git build; a GitHub push alone does not publish the site.
+
+The SEO release adds three topic pages with homepage internal links, expanded sitemap coverage, WebPage/BreadcrumbList metadata, and explicit development-state disclosures. Local Astro checks cover 26 files; the static build generates 8 HTML pages and the sitemap contains 7 indexable URLs. Browser checks found no horizontal overflow on the three new pages and homepage at 375/768/1024/1440, lazy images loaded after scrolling, and mobile navigation opened and closed correctly. Production deployment and Google indexing are separate checks, not ranking acceptance.

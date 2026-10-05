@@ -14,6 +14,8 @@ The site must communicate three layers without ambiguity:
 
 Grashof focuses on thermal digital twins and applied AI solutions.
 
+Thermal Digital Twin is currently under development (confirmed 2026-10-05). Do not describe it as a released product or a verified real-time deployment. Offline data/software checks in the satellite project do not establish integrated thermal-model acceptance or hardware validation.
+
 Search-facing core fields: 熱流工程解決方案、數位孿生熱管理、協助客戶建置 AI 落地應用. Mention 工業視覺 and AI / API applications within current applications; do not restore the retired Vision AI service row or Bio Vision AI case. Satellite thermal-management systems remain explicitly under development.
 
 Approved English positioning:
@@ -93,6 +95,14 @@ Do not add these homepage sections without explicit approval:
 - `/projects/market-pulse/`
 
 Bio Vision AI is not published as a case study. Vision AI is no longer a separate homepage service. Do not display its former case media or link to the retired case page.
+
+### Topic pages
+
+- `/solutions/thermal-fluid-solutions/` — existing commercial service scope and engineering case
+- `/solutions/thermal-digital-twin/` — development scope and verified high-level progress, visibly Under Development
+- `/rd/satellite-thermal-management/` — R&D roadmap, not a commercial product page
+
+Link these from existing homepage sections; retain the six-section homepage. Generated Future R&D images are concept illustrations, not solver outputs or validation evidence. Do not publish private model files, internal review packets, or unapproved hardware specifications.
 
 Each project page must include:
 

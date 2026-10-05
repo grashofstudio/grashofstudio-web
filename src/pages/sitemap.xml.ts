@@ -1,10 +1,12 @@
 import type { APIRoute } from 'astro';
+import { topics } from '../data/topics';
 
 const paths = [
   '/',
   '/projects/simulation-led-development/',
   '/projects/market-pulse/',
   '/privacy/',
+  ...topics.map((topic) => topic.path),
 ];
 
 export const GET: APIRoute = ({ site }) => {

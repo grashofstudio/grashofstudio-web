@@ -9,6 +9,9 @@ export type ProjectRecord = {
   stage: string;
   description: string;
   descriptionZh: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  relatedLinks?: { label: string; href: string }[];
   heroMedia: Media[];
   context: string;
   problem: string;
@@ -28,6 +31,12 @@ export const projectRecords: ProjectRecord[] = [
     stage: 'Engineering development support',
     description: 'Thermal studies for high-frequency heating equipment and laser-wafer process development.',
     descriptionZh: '以熱模型比較高周波鋼材加熱與晶圓雷射製程的參數、溫度分布及影響範圍',
+    seoTitle: '高周波與雷射熱模擬 | Thermal Simulation Case | Grashof',
+    seoDescription: 'Grashof 熱模擬工程案例：比較高周波加熱頻率、加熱時間、晶圓雷射功率與焦深，提供溫度分布、時間歷程與製程試驗參數建議。Thermal simulation for process development.',
+    relatedLinks: [
+      { label: '熱流工程解決方案', href: '/solutions/thermal-fluid-solutions/' },
+      { label: '數位孿生熱管理 · 開發中', href: '/solutions/thermal-digital-twin/' },
+    ],
     heroMedia: [
       { type: 'image', src: '/media/induction-heat.gif', alt: 'Animated induction-heating temperature field' },
       { type: 'image', src: '/media/laser-wafer-heating.gif', alt: 'Animated laser-wafer heating temperature field' },

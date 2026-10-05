@@ -38,6 +38,7 @@ const attrPattern = /(?:href|src)=["']([^"']+)["']/g;
 const hrefPattern = /href=["']([^"']+)["']/g;
 const titles = new Map();
 const descriptions = new Map();
+const indexableUrls = new Set();
 
 for (const file of htmlFiles) {
   const html = await fs.readFile(file, 'utf8');
@@ -66,6 +67,23 @@ for (const file of htmlFiles) {
   }
 
   const relative = path.relative(root, file);
+  const expectedPath = relative === 'index.html' ? '/' : relative.endsWith('/index.html') ? `/${relative.slice(0, -'index.html'.length)}` : `/${relative}`;
+  const canonical = html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i)?.[1];
+  const noindex = /<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i.test(html);
+  if (!noindex && canonical !== `https://grashofstudio.com${expectedPath}`) failures.push(`${relative} has an incorrect canonical URL`);
+  if ([...html.matchAll(/<h1(?:\s|>)/gi)].length !== 1) failures.push(`${relative} must have exactly one H1`);
+  if (!noindex && canonical) indexableUrls.add(canonical);
+  for (const match of html.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    try {
+      const schema = JSON.parse(match[1]);
+      if (schema['@type'] === 'BreadcrumbList') {
+        const items = schema.itemListElement;
+        if (!Array.isArray(items) || items.length < 2 || items.some((item, index) => item.position !== index + 1) || items.at(-1).item !== canonical) failures.push(`${relative} has invalid breadcrumb metadata`);
+      }
+    } catch {
+      failures.push(`${relative} has invalid JSON-LD`);
+    }
+  }
   const title = html.match(/<title>([^<]+)<\/title>/i)?.[1]?.trim();
   const description = html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)["']/i)?.[1]?.trim();
   const requiredSeo = [
@@ -112,8 +130,18 @@ const legacyIcon = await fs.readFile(path.join(root, 'icons/favicon.svg'), 'utf8
 if (!legacyIcon.includes(companyIcon.toString('base64'))) failures.push('Legacy favicon URL must contain the current company logo');
 if (homepage.includes('bio-vision-ai')) failures.push('Retired Bio Vision AI case must not be linked');
 
+const sitemap = await fs.readFile(path.join(root, 'sitemap.xml'), 'utf8');
+const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+if (new Set(sitemapUrls).size !== sitemapUrls.length) failures.push('Sitemap contains duplicate URLs');
+for (const url of indexableUrls) if (!sitemapUrls.includes(url)) failures.push(`Indexable page missing from sitemap: ${url}`);
+for (const url of sitemapUrls) if (!indexableUrls.has(url)) failures.push(`Sitemap contains an absent or noindex page: ${url}`);
+for (const topicPath of ['solutions/thermal-digital-twin/index.html', 'rd/satellite-thermal-management/index.html']) {
+  const topicHtml = await fs.readFile(path.join(root, topicPath), 'utf8');
+  if (!topicHtml.includes('UNDER DEVELOPMENT')) failures.push(`${topicPath} must disclose development status`);
+}
+
 if (failures.length) {
   console.error('Verification failed:\n' + failures.map((item) => `- ${item}`).join('\n'));
   process.exit(1);
 }
-console.log(`Verified ${htmlFiles.length} HTML files: local references, fragment targets, and SEO metadata passed.`);
+console.log(`Verified ${htmlFiles.length} HTML files and ${sitemapUrls.length} sitemap URLs: local references, fragments, SEO, JSON-LD, and development labels passed.`);

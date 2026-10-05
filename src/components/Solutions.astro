@@ -24,7 +24,10 @@ import { solutions } from '@data/site';
           <p class="solution__zh">{solution.statementZh}</p>
           <div class="tag-list">{solution.capabilities.map((item) => <span>{item}</span>)}</div>
           <p class="solution__outcome">Typical delivery — {solution.outcome}</p>
-          <a class="text-link" href={solution.projectHref}>View Project <span>→</span></a>
+          <div class="solution__links">
+            {solution.detailHref && <a class="text-link" href={solution.detailHref}>熱流解決方案詳情 <span aria-hidden="true">→</span></a>}
+            <a class="text-link" href={solution.projectHref}>View Project <span aria-hidden="true">→</span></a>
+          </div>
         </div>
         <figure class="solution__media"><Media media={solution.media} /></figure>
       </article>

@@ -19,6 +19,9 @@ Future product R&D focuses on:
 - `/`
 - `/projects/simulation-led-development/`
 - `/projects/market-pulse/`
+- `/solutions/thermal-fluid-solutions/`
+- `/solutions/thermal-digital-twin/` — under development
+- `/rd/satellite-thermal-management/` — R&D roadmap
 - `/privacy/`
 
 ## Local development
@@ -57,6 +60,8 @@ To regenerate the committed PNG and ICO assets after updating that mark, run
 `node scripts/generate-icons.mjs` after installing the project dependencies.
 
 Bio Vision AI is not published as a case study, and Vision AI is no longer a separate homepage service.
+
+Thermal Digital Twin remains under development. Its topic page distinguishes offline software/data work from pending thermal-model and hardware validation. Topic pages are linked from the existing homepage sections and included in the XML sitemap; WebPage and BreadcrumbList structured data describe visible page content, without implying guaranteed rankings or Google rich results.
 
 ## Deployment
 

@@ -1,0 +1,40 @@
+.topic-page { padding-top: var(--header-height); }
+.topic-hero, .topic-section { padding: 4.5rem var(--page-padding); border-bottom: 1px solid var(--color-line); }
+.topic-hero { padding-top: 3rem; }
+.topic-breadcrumb { margin-bottom: 3rem; color: var(--color-muted); font-size: .8rem; }
+.topic-breadcrumb a { display: inline-flex; min-height: 2.75rem; align-items: center; }
+.topic-hero h1 { max-width: 62rem; margin-bottom: 1rem; font-size: clamp(2.8rem, 6vw, 6rem); }
+.topic-title-zh { font-size: 1.25rem; color: var(--color-muted); }
+.topic-lead { max-width: 50rem; margin-top: 2rem; font-size: 1.4rem; }
+.topic-english, .topic-scope { max-width: 54rem; color: var(--color-muted); }
+.topic-scope { padding-left: 1rem; border-left: 2px solid var(--color-red); font-size: .9rem; }
+.topic-status { display: inline-block; padding: .5rem .75rem; border: 1px solid var(--color-red); color: var(--color-red-bright); font-size: .7rem; letter-spacing: .12em; }
+.topic-section h2 { margin-bottom: 2rem; font-family: var(--font-body); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 500; line-height: 1.4; letter-spacing: 0; text-transform: none; }
+.topic-section h3 { font-family: var(--font-body); font-size: 1.05rem; font-weight: 500; line-height: 1.5; letter-spacing: 0; text-transform: none; }
+.topic-section p, .topic-section li { color: #d1d2d5; }
+.topic-overview { display: grid; grid-template-columns: .8fr 1.2fr; gap: 3rem; }
+.topic-overview > div, .topic-prose { max-width: 50rem; }
+.topic-work { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 3rem; padding-left: 1.5rem; }
+.topic-work li { padding-left: .5rem; }
+.topic-work li::marker { color: var(--color-red-bright); }
+.topic-work p { max-width: 36rem; }
+.topic-io { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem; }
+.topic-io > div { padding-top: 1.5rem; border-top: 1px solid var(--color-line); }
+.topic-io ul { padding-left: 1.25rem; }
+.topic-io li { margin-bottom: .5rem; }
+.topic-action { display: inline-flex; min-height: 2.75rem; gap: 1.5rem; align-items: center; margin-top: 1rem; padding-block: .5rem; border-bottom: 1px solid var(--color-line-strong); text-decoration: none; }
+.topic-action:hover, .topic-breadcrumb a:hover, .topic-related a:hover { color: var(--color-red-bright); }
+.topic-figure { max-width: 64rem; margin: 2.5rem 0 0; border: 1px solid var(--color-line); }
+.topic-figure img { width: 100%; height: auto; }
+.topic-figure figcaption { padding: 1rem; color: var(--color-muted); font-size: .8rem; }
+.topic-questions { max-width: 54rem; }
+.topic-questions > div { padding: 1.5rem 0; border-top: 1px solid var(--color-line); }
+.topic-reference { max-width: 54rem; margin-top: 2rem; font-size: .8rem; }
+.topic-related { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; padding: 0; list-style: none; }
+.topic-related a { display: grid; gap: .5rem; min-height: 2.75rem; padding-block: 1rem; border-top: 1px solid var(--color-line); text-decoration: none; }
+.topic-related span { color: var(--color-muted); font-size: .85rem; }
+@media (max-width: 48rem) {
+  .topic-hero, .topic-section { padding: 3rem 1.25rem; }
+  .topic-overview, .topic-work, .topic-io, .topic-related { grid-template-columns: 1fr; gap: 1.5rem; }
+  .topic-hero h1 { font-size: 2.8rem; overflow-wrap: anywhere; }
+}

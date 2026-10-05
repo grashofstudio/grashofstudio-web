@@ -1,0 +1,11 @@
+---
+import TopicLayout from '@layouts/TopicLayout.astro';
+import { topics, type Topic } from '@data/topics';
+
+export function getStaticPaths() {
+  return topics.map((topic) => ({ params: { topic: topic.path.slice(1, -1) }, props: { topic } }));
+}
+interface Props { topic: Topic; }
+const { topic } = Astro.props;
+---
+<TopicLayout topic={topic} />
