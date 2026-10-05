@@ -1,5 +1,6 @@
 ---
 import Starfield from './Starfield.astro';
+import { contactEmail } from '@data/site';
 ---
 <section class="contact section-block" id="contact">
   <Starfield />
@@ -8,7 +9,7 @@ import Starfield from './Starfield.astro';
     <p class="section-label">Projects · Technical Collaboration</p>
     <div class="red-rule"></div>
     <h2>Discuss a<br />Technical Project.</h2>
-    <a class="contact__mail" href="mailto:hello@grashofstudio.com" aria-label="Contact us by email">
+    <a class="contact__mail" href={`mailto:${contactEmail}`} aria-label="Contact us by email">
       <span class="contact__mail-icon" aria-hidden="true">
         <svg viewBox="0 0 32 24" width="40" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false">
           <rect x="1" y="1" width="30" height="22" rx="1" />

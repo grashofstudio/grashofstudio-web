@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import Media from '@components/Media.astro';
 import type { ProjectRecord } from '@data/projects';
+import { contactEmail } from '@data/site';
 import '@styles/project.css';
 
 interface Props { project: ProjectRecord; }
@@ -59,6 +60,6 @@ const canonicalPath = `/projects/${project.slug}/`;
   <section class="project-cta">
     <p class="section-label">Contact</p><div class="red-rule"></div>
     <h2>Discuss a<br />Related Project.</h2>
-    <a href="mailto:hello@grashofstudio.com"><span aria-hidden="true">✉</span>hello@grashofstudio.com</a>
+    <a href={`mailto:${contactEmail}`}><span aria-hidden="true">✉</span>{contactEmail}</a>
   </section>
 </BaseLayout>

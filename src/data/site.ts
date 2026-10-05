@@ -1,5 +1,6 @@
 export const siteTitle = 'Grashof 格拉索工業 | 熱流工程、數位孿生與 AI 落地應用';
 export const siteDescription = '格拉索工業提供熱流工程解決方案、數位孿生熱管理，協助客戶建置工業視覺與客製 AI、API 落地應用。未來研發聚焦衛星熱管理系統與太空電磁干擾防護。';
+export const contactEmail = 'skyoz2131@gmail.com';
 
 export type Media = {
   type: 'image' | 'video';

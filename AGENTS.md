@@ -26,6 +26,8 @@ Approved Chinese positioning:
 
 Footer brand line: `Space Industry, Taiwan`. Keep the Contact us email action in section 6; do not display an email address or Privacy link in the footer.
 
+The temporary public contact email is `skyoz2131@gmail.com`. Use the shared `contactEmail` value in `src/data/site.ts` for all email actions and Organization metadata.
+
 Approved bridge statement:
 
 > Built for industry today. Engineered for space tomorrow.

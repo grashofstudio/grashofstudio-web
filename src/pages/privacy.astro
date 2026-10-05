@@ -1,16 +1,17 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import '@styles/pages.css';
+import { contactEmail } from '@data/site';
 ---
 <BaseLayout title="Privacy | Grashof" description="Privacy information for the Grashof website." canonicalPath="/privacy/">
   <article class="legal-page">
     <p class="section-label">Legal</p><div class="red-rule"></div>
     <h1>Privacy</h1>
-    <p class="legal-date">Last updated · September 2026</p>
+    <p class="legal-date">Last updated · October 2026</p>
     <section><h2>Current data collection</h2><p>本網站目前不提供會員註冊、付款或線上表單，也未主動部署廣告追蹤工具</p></section>
     <section><h2>Email</h2><p>點擊 Email 連結會開啟使用者裝置上的郵件服務，寄送內容由雙方郵件服務提供者處理</p></section>
     <section><h2>Hosting logs</h2><p>網站託管服務可能基於資安、維運與故障排除，自動處理必要的技術紀錄</p></section>
     <section><h2>Future updates</h2><p>若未來新增表單、Analytics、Cookie 或其他資料處理功能，本頁將同步更新</p></section>
-    <section><h2>Contact</h2><p><a href="mailto:hello@grashofstudio.com">hello@grashofstudio.com</a></p></section>
+    <section><h2>Contact</h2><p><a href={`mailto:${contactEmail}`}>{contactEmail}</a></p></section>
   </article>
 </BaseLayout>

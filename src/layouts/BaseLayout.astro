@@ -2,7 +2,7 @@
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import '@styles/global.css';
-import { siteDescription } from '../data/site';
+import { siteDescription, contactEmail } from '../data/site';
 
 interface Props {
   title: string;
@@ -30,7 +30,7 @@ const organizationSchema = {
   legalName: '格拉索工業有限公司',
   url: 'https://grashofstudio.com',
   logo: 'https://grashofstudio.com/icons/icon-512.png',
-  email: 'hello@grashofstudio.com',
+  email: contactEmail,
   description: siteDescription,
   address: { '@type': 'PostalAddress', addressCountry: 'TW' },
 };
@@ -55,7 +55,6 @@ const websiteSchema = {
     <meta name="theme-color" content="#000000" />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16 32x32 48x48 64x64" />
     <link rel="icon" href="/icons/favicon-96.png" type="image/png" sizes="96x96" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180" />
     <link rel="manifest" href="/site.webmanifest" />
